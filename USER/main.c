@@ -41,7 +41,7 @@ https://kvdz.taobao.com/
 
 int main(void)
  {
-	 u8 display[20];
+	u8 display[20];
 
 	 
   SystemInit();
@@ -74,10 +74,11 @@ int main(void)
 		USB_TxWrite("ÄãºÃ°¡£¡£¡\r\n", 12);
 		
 		
-	  sprintf((char*)display, (const char*)"ADInner:%4d", ADCValueInner);
-	  OLED_ShowString(0, 4, display);
+		sprintf((char*)display, (const char*)"ADInner:%4d", ADCValueInner);
+		//sprintf((char*)display, (const char*)"ADInner:%.2f", (ADCValueInner*3.3/4096+6)/11);
+		OLED_ShowString(0, 4, display);
 		sprintf((char*)display, (const char*)"OpInner:%4d", OutputInner);
-	  OLED_ShowString(0, 6, display);
+		OLED_ShowString(0, 6, display);
 		
 		LCD_Refresh_Gram();
 	}
