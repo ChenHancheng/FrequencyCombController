@@ -42,7 +42,6 @@ https://kvdz.taobao.com/
 int main(void)
  {
 	u8 display[20];
-
 	 
   SystemInit();
 	delay_init(72);	     //延时初始化
@@ -63,22 +62,21 @@ int main(void)
 	LCD_Refresh_Gram();
 	USBRelinkConfig();
 	 
-	RDivideTest(0); //ADF4002 不做分频，作为鉴频鉴相器使用
-	 
+	//RDivideTest(rDivideValue);
+	RDivideTest(1);	
 	while(1)
 	{
 		KeyRead();//按键读取
 		Set_PointFre(Keycode, 0);//按键处理
 		if(_return){_return=0;LCD_Refresh_Gram();}//更新显示
 		KEY_EXIT();
-		USB_TxWrite("你好啊！！\r\n", 12);
+		//USB_TxWrite("你好啊！！\r\n", 12);
+		//	RDivideTest(0);
 		
-		
-		sprintf((char*)display, (const char*)"ADInner:%4d", ADCValueInner);
-		//sprintf((char*)display, (const char*)"ADInner:%.2f", (ADCValueInner*3.3/4096+6)/11);
-		OLED_ShowString(0, 4, display);
+	  sprintf((char*)display, (const char*)"ADInner:%4d", ADCValueInner);
+	  OLED_ShowString(0, 4, display);
 		sprintf((char*)display, (const char*)"OpInner:%4d", OutputInner);
-		OLED_ShowString(0, 6, display);
+	  OLED_ShowString(0, 6, display);
 		
 		LCD_Refresh_Gram();
 	}
