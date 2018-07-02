@@ -117,6 +117,7 @@ void Set_PointFre(u32 Key_Value, u8* Task_ID)
 		case K_4_L: PInner++;break;
 		case K_3_S: 
 		case K_3_L: PInner--;break;
+		case K_2_S: key_choice = ~key_choice;
 	}
 	if(Key_Value != K_NO)
 	{

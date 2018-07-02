@@ -17,6 +17,10 @@ extern int POuter, IntegrateOuter;
 extern int OutputInner;
 extern int OutputOuter;
 
+extern int ADCValueInner1;
+
+extern int key_choice;
+
 void Timer4_Init(void); 
 void Timer2_Init(void);
  

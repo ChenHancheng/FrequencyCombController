@@ -62,7 +62,6 @@ int main(void)
 	LCD_Refresh_Gram();
 	USBRelinkConfig();
 	 
-	//RDivideTest(rDivideValue);
 	RDivideTest(1);	
 	while(1)
 	{
@@ -70,13 +69,14 @@ int main(void)
 		Set_PointFre(Keycode, 0);//按键处理
 		if(_return){_return=0;LCD_Refresh_Gram();}//更新显示
 		KEY_EXIT();
-		//USB_TxWrite("你好啊！！\r\n", 12);
-		//	RDivideTest(0);
 		
-	  sprintf((char*)display, (const char*)"ADInner:%4d", ADCValueInner);
+	  sprintf((char*)display, (const char*)"AD:%4d %4d", ADCValueInner, ADCValueInner1);
 	  OLED_ShowString(0, 4, display);
-		sprintf((char*)display, (const char*)"OpInner:%4d", OutputInner);
+		sprintf((char*)display, (const char*)"Out:%4d %2d", OutputInner, key_choice);
 	  OLED_ShowString(0, 6, display);
+		
+		sprintf((char*)display, (const char*)"T%.2f", (((float) ADCValueInner)*0.4491+3795.33));
+		OLED_ShowString(60, 0, display);
 		
 		LCD_Refresh_Gram();
 	}

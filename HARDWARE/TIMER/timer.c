@@ -4,14 +4,16 @@
 //这里时钟选择为APB1的2倍，而APB1为36M
 int count=0;
 
+int key_choice = 0;
+
 int ADCValueInner=0;
 int SetPointInner=ADVALUE_MID;
 int ErrorInner=0,  ErrorInnerSum=0;
 int IntegerInnerUpLim=3000, IntegerInnerDownLim=-3000;
-int OutputInner=0, PInner=0, IntegrateInner=0;
+int OutputInner=0, PInner=-50, IntegrateInner=-6;
 
-//int ADCValueInner1=0;
-int SetPointInner1=0;
+int ADCValueInner1=0;
+int SetPointInner1=1862;
 int ErrorInner1=0,  ErrorInnerSum1=0;
 int IntegerInnerUpLim1=3000, IntegerInnerDownLim1=-3000;
 //int OutputInner1=0, PInner1=0, IntegrateInner1=0;
@@ -80,8 +82,10 @@ void Timer4_Init(void)
 void TIM2_IRQHandler(void)   //TIM2中断 100Hz中断率,用来控制光纤盘温度
 {
 	TIM_ClearFlag(TIM2, TIM_IT_Update);
-	if(GPIO_ReadInputDataBit(GPIOC,GPIO_Pin_0) == 0 ) {
-		ADCValueInner = Get_Adc(0); //没有锁定，温度控制为内控模式
+	ADCValueInner = Get_Adc(0);
+	ADCValueInner1 = Get_Adc(1); 
+	//没有锁定，温度控制为内控模式
+	if(key_choice == 0 ) {
 		ADCValueInner = KalmanFilter(ADCValueInner); //内控模式下，卡尔曼滤波的状态方程为x(k) = x(k-1),Q1=xx;	
 		
 	  ErrorInner = ADCValueInner - SetPointInner;
@@ -92,17 +96,17 @@ void TIM2_IRQHandler(void)   //TIM2中断 100Hz中断率,用来控制光纤盘温度
 	
 	  OutputInner = PInner*ErrorInner/100 + IntegrateInner*ErrorInnerSum/100+1500;
 	}
+	//重频锁定，温度控制为外部控制模式
 	else{
-		ADCValueInner = Get_Adc(1); //重频锁定，温度控制为外部控制模式
-		ADCValueInner = KalmanFilter(ADCValueInner); //外控模式下，卡尔曼滤波的状态方程为x(k) = x(k-1),Q2=xx;(Q2>Q1)
+		ADCValueInner1 = KalmanFilter(ADCValueInner1); //外控模式下，卡尔曼滤波的状态方程为x(k) = x(k-1),Q2=xx;(Q2>Q1)
 		
-		ErrorInner1 = ADCValueInner - SetPointInner1;
+		ErrorInner1 = (ADCValueInner1 - SetPointInner1)/10;
 	  ErrorInnerSum1 = ErrorInnerSum1 + ErrorInner1;
 		
 		if(ErrorInnerSum1 > IntegerInnerUpLim1) ErrorInnerSum1 = IntegerInnerUpLim1;
     if(ErrorInnerSum1 < IntegerInnerDownLim1) ErrorInnerSum1 = IntegerInnerDownLim1;
 	
-	  OutputInner = PInner*ErrorInner1/100 + IntegrateInner*ErrorInnerSum1/100+1500;
+	  OutputInner = -PInner*ErrorInner1/100 + -IntegrateInner*ErrorInnerSum1/100+1500;
 	}
 	
 	OutputInner = OutputInner>3299?3299:OutputInner;
