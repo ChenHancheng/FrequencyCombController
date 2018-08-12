@@ -1,5 +1,5 @@
 Dependencies for Project 'ADF4002_TEC', Target 'Target 1': (DO NOT MODIFY !)
-F (.\main.c)(0x5B397E9B)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\HARDWARE\KEY -I ..\HARDWARE\EXTI -I ..\HARDWARE\WDG -I ..\HARDWARE\TIMER -I ..\HARDWARE\ADC -I ..\HARDWARE\USB\lib -I ..\HARDWARE\USB\src -I ..\SYSTEM\Public -I ..\HARDWARE\STMFLASH -I ..\HARDWARE\LCD -I ..\Soft\Task -I ..\HARDWARE\ADF4002 -I ..\HARDWARE\DAC -I ..\HARDWARE\ADC -I ..\Soft-I E:\ChenHancheng\FrequencyCombController\USER\RTE-I E:\ChenHancheng\Keil\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-I E:\ChenHancheng\Keil\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\main.o --omf_browse .\main.crf --depend .\main.d)
+F (.\main.c)(0x5B45C777)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\HARDWARE\KEY -I ..\HARDWARE\EXTI -I ..\HARDWARE\WDG -I ..\HARDWARE\TIMER -I ..\HARDWARE\ADC -I ..\HARDWARE\USB\lib -I ..\HARDWARE\USB\src -I ..\SYSTEM\Public -I ..\HARDWARE\STMFLASH -I ..\HARDWARE\LCD -I ..\Soft\Task -I ..\HARDWARE\ADF4002 -I ..\HARDWARE\DAC -I ..\HARDWARE\ADC -I ..\Soft-I E:\ChenHancheng\FrequencyCombController\USER\RTE-I E:\ChenHancheng\Keil\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-I E:\ChenHancheng\Keil\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\main.o --omf_browse .\main.crf --depend .\main.d)
 I (..\HARDWARE\LED\led.h)(0x580AC6C1)
 I (..\SYSTEM\sys\sys.h)(0x580AC6C1)
 I (..\USER\stm32f10x.h)(0x4D783CB4)
@@ -37,7 +37,7 @@ I (E:\ChenHancheng\Keil\ARM\ARMCC\include\stdio.h)(0x56FE42DE)
 I (..\HARDWARE\EXTI\exti.h)(0x580AC2C3)
 I (..\HARDWARE\WDG\wdg.h)(0x580AC6C1)
 I (..\HARDWARE\TIMER\timer.h)(0x5B38E289)
-I (..\Soft\common.h)(0x5B39765B)
+I (..\Soft\common.h)(0x5B45C7BB)
 I (..\HARDWARE\ADC\adc.h)(0x5B357340)
 I (..\HARDWARE\DAC\dac.h)(0x5B320DD0)
 I (..\SYSTEM\Public\Kalman.h)(0x5B359934)
@@ -171,7 +171,7 @@ I (..\HARDWARE\USB\lib\usb_int.h)(0x50FD2624)
 I (E:\ChenHancheng\Keil\ARM\ARMCC\include\stdio.h)(0x56FE42DE)
 I (..\HARDWARE\ADF4002\adf4002.h)(0x5837DEA8)
 I (..\HARDWARE\TIMER\timer.h)(0x5B38E289)
-I (..\Soft\common.h)(0x5B39765B)
+I (..\Soft\common.h)(0x5B45C7BB)
 I (..\HARDWARE\LED\led.h)(0x580AC6C1)
 I (..\HARDWARE\ADC\adc.h)(0x5B357340)
 I (..\HARDWARE\DAC\dac.h)(0x5B320DD0)
@@ -306,7 +306,7 @@ I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\STM32F10x_FWLib\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
 I (..\HARDWARE\LED\led.h)(0x580AC6C1)
-F (..\HARDWARE\TIMER\timer.c)(0x5B397F4F)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\HARDWARE\KEY -I ..\HARDWARE\EXTI -I ..\HARDWARE\WDG -I ..\HARDWARE\TIMER -I ..\HARDWARE\ADC -I ..\HARDWARE\USB\lib -I ..\HARDWARE\USB\src -I ..\SYSTEM\Public -I ..\HARDWARE\STMFLASH -I ..\HARDWARE\LCD -I ..\Soft\Task -I ..\HARDWARE\ADF4002 -I ..\HARDWARE\DAC -I ..\HARDWARE\ADC -I ..\Soft-I E:\ChenHancheng\FrequencyCombController\USER\RTE-I E:\ChenHancheng\Keil\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-I E:\ChenHancheng\Keil\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\timer.o --omf_browse .\timer.crf --depend .\timer.d)
+F (..\HARDWARE\TIMER\timer.c)(0x5B48B591)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\HARDWARE\KEY -I ..\HARDWARE\EXTI -I ..\HARDWARE\WDG -I ..\HARDWARE\TIMER -I ..\HARDWARE\ADC -I ..\HARDWARE\USB\lib -I ..\HARDWARE\USB\src -I ..\SYSTEM\Public -I ..\HARDWARE\STMFLASH -I ..\HARDWARE\LCD -I ..\Soft\Task -I ..\HARDWARE\ADF4002 -I ..\HARDWARE\DAC -I ..\HARDWARE\ADC -I ..\Soft-I E:\ChenHancheng\FrequencyCombController\USER\RTE-I E:\ChenHancheng\Keil\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-I E:\ChenHancheng\Keil\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\timer.o --omf_browse .\timer.crf --depend .\timer.d)
 I (..\HARDWARE\TIMER\timer.h)(0x5B38E289)
 I (..\SYSTEM\sys\sys.h)(0x580AC6C1)
 I (..\USER\stm32f10x.h)(0x4D783CB4)
@@ -337,7 +337,7 @@ I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\STM32F10x_FWLib\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
-I (..\Soft\common.h)(0x5B39765B)
+I (..\Soft\common.h)(0x5B45C7BB)
 I (..\HARDWARE\LED\led.h)(0x580AC6C1)
 I (..\HARDWARE\ADC\adc.h)(0x5B357340)
 I (..\HARDWARE\DAC\dac.h)(0x5B320DD0)
@@ -1274,7 +1274,7 @@ I (..\SYSTEM\Public\Queue.h)(0x56D14FB8)
 I (..\SYSTEM\Public\stdint.h)(0x543E8489)
 F (..\SYSTEM\Public\Kalman.c)(0x5B35993F)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\HARDWARE\KEY -I ..\HARDWARE\EXTI -I ..\HARDWARE\WDG -I ..\HARDWARE\TIMER -I ..\HARDWARE\ADC -I ..\HARDWARE\USB\lib -I ..\HARDWARE\USB\src -I ..\SYSTEM\Public -I ..\HARDWARE\STMFLASH -I ..\HARDWARE\LCD -I ..\Soft\Task -I ..\HARDWARE\ADF4002 -I ..\HARDWARE\DAC -I ..\HARDWARE\ADC -I ..\Soft-I E:\ChenHancheng\FrequencyCombController\USER\RTE-I E:\ChenHancheng\Keil\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-I E:\ChenHancheng\Keil\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\kalman.o --omf_browse .\kalman.crf --depend .\kalman.d)
 I (..\SYSTEM\Public\Kalman.h)(0x5B359934)
-I (..\Soft\common.h)(0x5B39765B)
+I (..\Soft\common.h)(0x5B45C7BB)
 F (..\HARDWARE\USB\src\hw_config.c)(0x56D97F6D)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\HARDWARE\KEY -I ..\HARDWARE\EXTI -I ..\HARDWARE\WDG -I ..\HARDWARE\TIMER -I ..\HARDWARE\ADC -I ..\HARDWARE\USB\lib -I ..\HARDWARE\USB\src -I ..\SYSTEM\Public -I ..\HARDWARE\STMFLASH -I ..\HARDWARE\LCD -I ..\Soft\Task -I ..\HARDWARE\ADF4002 -I ..\HARDWARE\DAC -I ..\HARDWARE\ADC -I ..\Soft-I E:\ChenHancheng\FrequencyCombController\USER\RTE-I E:\ChenHancheng\Keil\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-I E:\ChenHancheng\Keil\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\hw_config.o --omf_browse .\hw_config.crf --depend .\hw_config.d)
 I (..\HARDWARE\USB\lib\usb_lib.h)(0x50FD2624)
 I (..\HARDWARE\USB\src\hw_config.h)(0x56D97F80)

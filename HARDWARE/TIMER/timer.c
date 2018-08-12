@@ -10,7 +10,7 @@ int ADCValueInner=0;
 int SetPointInner=ADVALUE_MID;
 int ErrorInner=0,  ErrorInnerSum=0;
 int IntegerInnerUpLim=3000, IntegerInnerDownLim=-3000;
-int OutputInner=0, PInner=-50, IntegrateInner=-6;
+int OutputInner=0, PInner=-36, IntegrateInner=-2;
 
 int ADCValueInner1=0;
 int SetPointInner1=1862;
@@ -100,13 +100,13 @@ void TIM2_IRQHandler(void)   //TIM2中断 100Hz中断率,用来控制光纤盘温度
 	else{
 		ADCValueInner1 = KalmanFilter(ADCValueInner1); //外控模式下，卡尔曼滤波的状态方程为x(k) = x(k-1),Q2=xx;(Q2>Q1)
 		
-		ErrorInner1 = (ADCValueInner1 - SetPointInner1)/10;
+		ErrorInner1 = (ADCValueInner1 - SetPointInner1);
 	  ErrorInnerSum1 = ErrorInnerSum1 + ErrorInner1;
 		
 		if(ErrorInnerSum1 > IntegerInnerUpLim1) ErrorInnerSum1 = IntegerInnerUpLim1;
     if(ErrorInnerSum1 < IntegerInnerDownLim1) ErrorInnerSum1 = IntegerInnerDownLim1;
 	
-	  OutputInner = -PInner*ErrorInner1/100 + -IntegrateInner*ErrorInnerSum1/100+1500;
+	  OutputInner = PInner*ErrorInner1/800 + IntegrateInner*ErrorInnerSum1/1000+1500;
 	}
 	
 	OutputInner = OutputInner>3299?3299:OutputInner;

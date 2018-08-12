@@ -75,8 +75,8 @@ int main(void)
 		sprintf((char*)display, (const char*)"Out:%4d %2d", OutputInner, key_choice);
 	  OLED_ShowString(0, 6, display);
 		
-		sprintf((char*)display, (const char*)"T%.2f", (((float) ADCValueInner)*0.4491+3795.33));
-		OLED_ShowString(60, 0, display);
+		sprintf((char*)display, (const char*)"T%.2f", ((-(float) ADCValueInner)*0.4491+3795.33)/100);
+		OLED_ShowString(80, 2, display);
 		
 		LCD_Refresh_Gram();
 	}
