@@ -53,7 +53,7 @@ int main(void)
 	 
 	AdcInnerInit(); 
 	Timer2_Init(); //恒温盒光纤盘控制中断
-	//Timer4_Init(); //恒温盒腔体恒温控制
+	Timer4_Init(); //恒温盒腔体恒温控制
 	Dac1_Init();
 	 
 	LED_Init();
@@ -70,13 +70,20 @@ int main(void)
 		if(_return){_return=0;LCD_Refresh_Gram();}//更新显示
 		KEY_EXIT();
 		
-	  sprintf((char*)display, (const char*)"AD:%4d %4d", ADCValueInner, ADCValueInner1);
-	  OLED_ShowString(0, 4, display);
-		sprintf((char*)display, (const char*)"Out:%4d %2d", OutputInner, key_choice);
+		if(key_choice == 0){
+			sprintf((char*)display, (const char*)"AD:%4d %4d %1d", ADCValueInner, ADCValueOuter, key_choice);
+			OLED_ShowString(0, 4, display);
+		}
+		else{
+			sprintf((char*)display, (const char*)"AD:%4d %4d %1d", ADCValueInner1, ADCValueOuter, key_choice);
+			OLED_ShowString(0, 4, display);
+		}
+			
+		sprintf((char*)display, (const char*)"Out:%4d %2d", OutputInner, OutputOuter);
 	  OLED_ShowString(0, 6, display);
 		
-		sprintf((char*)display, (const char*)"T%.2f", ((-(float) ADCValueInner)*0.4491+3795.33)/100);
-		OLED_ShowString(80, 2, display);
+		//sprintf((char*)display, (const char*)"T%.2f", ((-(float) ADCValueInner)*0.4491+3795.33)/100);
+		//OLED_ShowString(80, 2, display);
 		
 		LCD_Refresh_Gram();
 	}

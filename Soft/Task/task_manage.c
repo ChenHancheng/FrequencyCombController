@@ -117,13 +117,13 @@ void Set_PointFre(u32 Key_Value, u8* Task_ID)
 		case K_4_L: PInner++;break;
 		case K_3_S: 
 		case K_3_L: PInner--;break;
-		case K_2_S: key_choice = ~key_choice;
+		case K_2_S: key_choice = (key_choice==0);
 	}
 	if(Key_Value != K_NO)
 	{
-		sprintf((char*)display, (const char*)"PInner:%d     ", PInner);
+		sprintf((char*)display, (const char*)"P In:%3d Ot:%3d", PInner, POuter);
 		OLED_ShowString(0, 0, display);
-		sprintf((char*)display, (const char*)"IInner:%d     ", IntegrateInner);
+		sprintf((char*)display, (const char*)"I In:%2d Ot:%2d", IntegrateInner, IntegrateOuter);
 		OLED_ShowString(0, 2, display);
 		_return=1;
 	}

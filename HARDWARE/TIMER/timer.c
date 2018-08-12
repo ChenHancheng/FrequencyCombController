@@ -4,7 +4,7 @@
 //这里时钟选择为APB1的2倍，而APB1为36M
 int count=0;
 
-int key_choice = 0;
+unsigned char key_choice = 0;
 
 int ADCValueInner=0;
 int SetPointInner=ADVALUE_MID;
@@ -19,10 +19,10 @@ int IntegerInnerUpLim1=3000, IntegerInnerDownLim1=-3000;
 //int OutputInner1=0, PInner1=0, IntegrateInner1=0;
 
 int ADCValueOuter=0;
-int SetPointOuter=0;
+int SetPointOuter=ADVALUE_MID;
 int ErrorOuter=0,  ErrorOuterSum=0;
 int IntegerOuterUpLim=3000, IntegerOuterDownLim=-3000;
-int OutputOuter=0, POuter=0, IntegrateOuter=0;
+int OutputOuter=0, POuter=-30, IntegrateOuter=-2;
 
 void Timer2_Init(void)
 {
@@ -118,7 +118,7 @@ void TIM4_IRQHandler(void)   //TIM4中断 0.5Hz中断率，用来控制恒温盒温度
 {
 	TIM_ClearFlag(TIM4, TIM_IT_Update);
 
-	ADCValueOuter = Get_Adc(1);
+	ADCValueOuter = Get_Adc(2);
 	
 	ErrorOuter = ADCValueOuter - SetPointOuter;
 	ErrorOuterSum = ErrorOuterSum + ErrorOuter;
@@ -126,18 +126,11 @@ void TIM4_IRQHandler(void)   //TIM4中断 0.5Hz中断率，用来控制恒温盒温度
 	if(ErrorOuterSum > IntegerOuterUpLim) ErrorOuterSum = IntegerOuterUpLim;
   if(ErrorOuterSum < IntegerOuterDownLim) ErrorOuterSum = IntegerOuterDownLim;
 	
-	OutputOuter = POuter*ErrorOuter + IntegrateOuter*ErrorOuterSum;
+	OutputOuter = POuter*ErrorOuter/800 + IntegrateOuter*ErrorOuterSum/1000+1500;
 	
-	OutputOuter = OutputOuter>3100?3100:OutputOuter;
+	OutputOuter = OutputOuter>3299?3299:OutputOuter;
 	OutputOuter = OutputOuter<0?0:OutputOuter;
 	
-	//Dac1_Set_Vol(OutputOuter);
-	if(ADCValueOuter > 5000)
-	{
-	   ADCValueOuter--;
-	}
-	count++;
-	if(count%2 == 0)	GPIO_WriteBit(GPIOA,GPIO_Pin_8,Bit_RESET);
-	else GPIO_WriteBit(GPIOA,GPIO_Pin_8,Bit_SET);	
+	Dac1_Set_Vol(OutputOuter);
 }
 

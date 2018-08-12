@@ -19,7 +19,7 @@ extern int OutputOuter;
 
 extern int ADCValueInner1;
 
-extern int key_choice;
+extern unsigned char key_choice;
 
 void Timer4_Init(void); 
 void Timer2_Init(void);
