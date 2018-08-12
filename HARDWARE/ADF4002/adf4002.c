@@ -48,10 +48,12 @@ void InitPll(void)
 	GPIO_InitTypeDef  GPIO_InitStructure;
   //和ADF4002进行通信的IO口初始化
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);	 //使能PC端口时钟
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9|GPIO_Pin_10|GPIO_Pin_11;
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8|GPIO_Pin_9|GPIO_Pin_10|GPIO_Pin_11;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; 		 //推挽输出
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOC, &GPIO_InitStructure);
+	
+	GPIO_SetBits(GPIOC, GPIO_Pin_8);
 	//MUXOUT初始化
 //	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;
 //	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;		//上拉输入模式
