@@ -22,7 +22,7 @@ int ADCValueOuter=0;
 int SetPointOuter=ADVALUE_MID;
 int ErrorOuter=0,  ErrorOuterSum=0;
 int IntegerOuterUpLim=3000, IntegerOuterDownLim=-3000;
-int OutputOuter=0, POuter=-30, IntegrateOuter=-2;
+int OutputOuter=0, POuter=-39, IntegrateOuter=-3;
 
 void Timer2_Init(void)
 {
@@ -106,7 +106,7 @@ void TIM2_IRQHandler(void)   //TIM2中断 100Hz中断率,用来控制光纤盘温度
 		if(ErrorInnerSum1 > IntegerInnerUpLim1) ErrorInnerSum1 = IntegerInnerUpLim1;
     if(ErrorInnerSum1 < IntegerInnerDownLim1) ErrorInnerSum1 = IntegerInnerDownLim1;
 	
-	  OutputInner = PInner*ErrorInner1/800 + IntegrateInner*ErrorInnerSum1/1000+1500;
+	  OutputInner = PInner*ErrorInner1/800 + IntegrateInner*ErrorInnerSum1/100+1500;
 	}
 	
 	OutputInner = OutputInner>3299?3299:OutputInner;
@@ -126,11 +126,11 @@ void TIM4_IRQHandler(void)   //TIM4中断 0.5Hz中断率，用来控制恒温盒温度
 	if(ErrorOuterSum > IntegerOuterUpLim) ErrorOuterSum = IntegerOuterUpLim;
   if(ErrorOuterSum < IntegerOuterDownLim) ErrorOuterSum = IntegerOuterDownLim;
 	
-	OutputOuter = POuter*ErrorOuter/800 + IntegrateOuter*ErrorOuterSum/1000+1500;
+	OutputOuter = POuter*ErrorOuter/100 + IntegrateOuter*ErrorOuterSum/100+1500;
 	
 	OutputOuter = OutputOuter>3299?3299:OutputOuter;
 	OutputOuter = OutputOuter<0?0:OutputOuter;
 	
-	Dac1_Set_Vol(OutputOuter);
+	Dac2_Set_Vol(OutputOuter);
 }
 

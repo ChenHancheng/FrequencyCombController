@@ -54,7 +54,7 @@ int main(void)
 	AdcInnerInit(); 
 	Timer2_Init(); //恒温盒光纤盘控制中断
 	Timer4_Init(); //恒温盒腔体恒温控制
-	Dac1_Init();
+	Dac_Init();
 	 
 	LED_Init();
 	 

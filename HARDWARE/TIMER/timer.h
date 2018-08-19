@@ -11,13 +11,15 @@
 
 extern int ADCValueInner;
 extern int ADCValueOuter;
+extern int ADCValueInner1;
+
 extern int PInner, IntegrateInner;
 extern int POuter, IntegrateOuter;
 
 extern int OutputInner;
 extern int OutputOuter;
 
-extern int ADCValueInner1;
+
 
 extern unsigned char key_choice;
 

@@ -16,8 +16,9 @@
 //////////////////////////////////////////////////////////////////////////////////
 								    
 
-void Dac1_Init(void);//回环模式初始化		 	 
+void Dac_Init(void);//回环模式初始化		 	 
 void Dac1_Set_Vol(u16 vol);
+void Dac2_Set_Vol(u16 vol);
 #endif
 
 
