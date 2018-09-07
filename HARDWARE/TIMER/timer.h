@@ -14,6 +14,7 @@ extern int ADCValueOuter;
 extern int ADCValueInner1;
 
 extern int PInner, IntegrateInner;
+extern int PInner1, IntegrateInner1;
 extern int POuter, IntegrateOuter;
 
 extern int OutputInner;

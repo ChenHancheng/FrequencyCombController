@@ -71,7 +71,7 @@ int main(void)
 		KEY_EXIT();
 		
 		if(key_choice == 0){
-			sprintf((char*)display, (const char*)"AD:%4d %4d %1d", ADCValueInner, ADCValueOuter, key_choice);
+			sprintf((char*)display, (const char*)"AD:%4d %4d %1d", ADCValueInner1, ADCValueOuter, key_choice);
 			OLED_ShowString(0, 4, display);
 		}
 		else{

@@ -13,8 +13,8 @@ long int ReadData;
 //long int Reg0x00 = 0x001F40;//r
 //////long int Reg0x01 = 0x0DAC01;//n
 
-long int Reg0x02 = 0x1F8042; //function
-long int Reg0x03 = 0x1F8043;//init
+long int Reg0x02 = 0x1F8052; //function
+long int Reg0x03 = 0x1F8053;//init
 //long int Reg0x02 = 0x0D80B2; //function DVDD
 //long int Reg0x03 = 0x0D80B3;//init DVDD
 
@@ -55,9 +55,9 @@ void InitPll(void)
 	
 	GPIO_SetBits(GPIOC, GPIO_Pin_8);
 	//MUXOUT初始化
-//	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;
-//	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;		//上拉输入模式
-//	GPIO_Init(GPIOC, &GPIO_InitStructure);	
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;		//上拉输入模式
+	GPIO_Init(GPIOC, &GPIO_InitStructure);	
 
 	PLL_SCK_0;
 	PLL_SDI_0;

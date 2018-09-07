@@ -110,13 +110,13 @@ void Set_PointFre(u32 Key_Value, u8* Task_ID)
 	switch(Key_Value)
 	{
 		case K_1_S:
-		case K_1_L:IntegrateOuter--;break;
+		case K_1_L:IntegrateInner1--;break;
 		case K_5_S:
-		case K_5_L:IntegrateOuter++;break;
+		case K_5_L:IntegrateInner1++;break;
 		case K_4_S: 
-		case K_4_L: POuter++;break;
+		case K_4_L: PInner1++;break;
 		case K_3_S: 
-		case K_3_L: POuter--;break;
+		case K_3_L: PInner1--;break;
 		case K_2_S: key_choice = (key_choice==0);
 	}
 	if(Key_Value != K_NO)

@@ -13,7 +13,7 @@ int IntegerInnerUpLim=3000, IntegerInnerDownLim=-3000;
 int OutputInner=0, PInner=-36, IntegrateInner=-2;
 
 int ADCValueInner1=0;
-int SetPointInner1=1862;
+int SetPointInner1=1862;//1.5V
 int ErrorInner1=0,  ErrorInnerSum1=0;
 int IntegerInnerUpLim1=3000, IntegerInnerDownLim1=-3000;
 //int OutputInner1=0, PInner1=0, IntegrateInner1=0;
@@ -81,9 +81,19 @@ void Timer4_Init(void)
 
 void TIM2_IRQHandler(void)   //TIM2中断 100Hz中断率,用来控制光纤盘温度
 {
+	static int LockCount=0;	
+	
 	TIM_ClearFlag(TIM2, TIM_IT_Update);
-	ADCValueInner = Get_Adc(0);
+	ADCValueInner = ADVALUE_MID;//Get_Adc(0);
 	ADCValueInner1 = Get_Adc(1); 
+	if(ADCValueInner1<3500 && ADCValueInner1>500){
+		LockCount++;
+	}
+	else{
+		LockCount = 0;
+		key_choice = 0;
+	}
+	if(LockCount == 3) key_choice = 1;
 	//没有锁定，温度控制为内控模式
 	if(key_choice == 0 ) {
 		ADCValueInner = KalmanFilter(ADCValueInner); //内控模式下，卡尔曼滤波的状态方程为x(k) = x(k-1),Q1=xx;	
@@ -106,7 +116,7 @@ void TIM2_IRQHandler(void)   //TIM2中断 100Hz中断率,用来控制光纤盘温度
 		if(ErrorInnerSum1 > IntegerInnerUpLim1) ErrorInnerSum1 = IntegerInnerUpLim1;
     if(ErrorInnerSum1 < IntegerInnerDownLim1) ErrorInnerSum1 = IntegerInnerDownLim1;
 	
-	  OutputInner = PInner*ErrorInner1/800 + IntegrateInner*ErrorInnerSum1/100+1500;
+	  OutputInner = PInner*ErrorInner1/300 + IntegrateInner*ErrorInnerSum1/400+1500;
 	}
 	
 	OutputInner = OutputInner>3299?3299:OutputInner;
